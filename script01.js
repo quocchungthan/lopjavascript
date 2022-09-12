@@ -241,14 +241,25 @@
 //  * - vong lap
 //  * - nhung javascript vao html
 //  */
-
+//https://github.com/quocchungthan/lopjavascript
+// https://meet.google.com/dvb-zysv-rkp
 function tinhTien() {
     // doc gia tri cua 4 input
     var giaTien = []; // 4 numbers
+    var thegiaTien1 = document.getElementById('giaTien1');
+    var giaTriGiaTien1 = thegiaTien1.value;
 
-    giaTien[0] = parseInt(document.getElementById('giaTien1').value);
+    giaTien[0] = parseInt(giaTriGiaTien1);
+    // parseInt(document.getElementById('giaTien1').value)
     // tuong tu cac san pham khac...
-    var checkbox = [false, false, false, true]; // 4 booleans
+    var checkbox = []; // 4 booleans
+
+    for (var i = 1; i < 5; ++i) {
+        var checkboxId = 'thanhToan' + i;
+        var theCheckbox = document.getElementById(checkboxId).checked;
+        checkbox.push(theCheckbox);
+    }
+
     var tongTien = 0;
     for (var i = 0; i < 4; ++ i) {
         // neu nhu checkBox o vi tri i == true thi cong gia tien tai vi tri I vao tong.
