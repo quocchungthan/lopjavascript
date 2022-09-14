@@ -165,6 +165,7 @@ console.log(tong2);
  * 3.1 Cho một array các số nguyên, tính tổng tất cả các số lẻ.
  * 4. Cho một số nguyên, đếm số chữ số của số đó. 1000 -> 4. 200 -> 3
  * 5. kiểm tra xem một dãy số nguyên có phải là một dãy đối xứng.
+ * vi du: [2, 1, 1, 2] hoac [2 , 3 ,1 , 3 ,2 ]
  * 
  */
 
