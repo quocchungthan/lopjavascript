@@ -29,6 +29,7 @@
  * if (<điều kiện>){
  *  // thực hiện tập lệnh khi thoả mãn điều kiện
  * }
+ * https://github.com/quocchungthan/lopjavascript
  * 
  * if (<điều kiện>){
  *  // thực hiện tập lệnh khi thoả mãn điều kiện
@@ -53,13 +54,51 @@
  * }
  * 
  */
+var theKy = 1; // phép gán
+var soNamNhapvao = 1980;
+var batDauCuaTheky = theKy * 100; // 100 -> phép nhân
+var ketThuc = theKy * 100 + 99; // 199 -> nhân và cộng 
+// dùng biến để lưu trữ giá trị của biểu thức.
+if (soNamNhapvao >= batDauCuaTheky &&  soNamNhapvao <= ketThuc) { 
+    // phép so sánh + toán tử Và
+    // kết hơp với câu lệnh điều kiện.
+    console.log("nam " + soNamNhapvao + " thuoc the ky " + theKy);
+}
 
-
+for (var demTheKy = 0; demTheKy < 22; demTheKy = demTheKy + 1) {
+    theKy = theKy + 1; // phép gán // theKy = 2
+    batDauCuaTheky = theKy * 100; // 100 -> phép nhân
+    ketThuc = theKy * 100 + 99; // 199 -> nhân và cộng 
+    // dùng biến để lưu trữ giá trị của biểu thức.
+    if (soNamNhapvao >= batDauCuaTheky &&  soNamNhapvao <= ketThuc) { 
+        // phép so sánh + toán tử Và
+        // kết hơp với câu lệnh điều kiện.
+        console.log("nam " + soNamNhapvao + " thuoc the ky " + theKy);
+    }
+}
 /**
  * 
  * Bài tập, 
  * 0. Nhập vào một số nguyên = số năm. ví dụ: 1999, 2005, 2015 -> tính toán thế kỷ của năm đó và in ra. ví dụ: năm 1950 thuộc thế kể 20.
  * p/s: thể kỷ 01 gồm các năm từ 0 -> 99. Thế kỷ 2 từ 100 -> 199 và tương tự...
+ * 
+ /**
+  * Huy Trần18:36
+<body>
+    <input id="sonam" type="text">
+    <input onclick="tinhtheky()" type="button" value="kiểm tra">
+    <script>
+        function tinhtheky(){
+            var input = document.getElementById("sonam").value
+            var output = (Math.floor((input/100)))+1
+            document.writeln(
+                "Năm sinh của bạn là: " + input + " thuộc thế kỉ: " + output
+            )
+        }
+    </script>
+</body>
+  */
+ /*
  * 
  * 1. Khai báo một biến có kiểu dữ liệu là number, kiểm tra số đã cho là số chẵn hay số lẽ, và in ra kết quả.
  */
