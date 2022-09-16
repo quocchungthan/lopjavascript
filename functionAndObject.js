@@ -15,7 +15,7 @@
  *  // <return - phần không bắt buộc>
  * }
  */
-
+// https://github.com/quocchungthan/lopjavascript
 /**
 
 // f(x) = 2x + 1;
@@ -55,7 +55,21 @@ var thongbao = "thong bao";
 alert(thongbao);
 var x = prompt("nhập X: "); // vì function này có dữ liệu trả về
 var castToNumber = parseInt("12"); // -> chuyển kiểu dữ liệu từ string sang number: "12" -> 12
+// vi du
+// f(x) = 2x + 1;
+var ham = function (x) { // ~ var x;
+    var ketQua = 2 * x + 1;
 
+    return ketQua;
+    console.log('ketthuc function'); // <- khong the thuc thi lenh sau return
+    // 
+}
+// function ~ biến -> không được đặt trùng tên.
+
+function hamCoNhieuThamSo(a, b) {
+
+}
+// https://github.com/quocchungthan/lopjavascript
 /**
  * 
  * Bài tập:
@@ -63,8 +77,38 @@ var castToNumber = parseInt("12"); // -> chuyển kiểu dữ liệu từ string
  * f(x) = 2x + 1;
  * f(a, b) = 2a + b;
  * f(n) = 1 + 2 + 3 + 4 + ... + n;
+ */
+// khai báo một hàm
+// var tong = 0;
+// // lặp từ 1 -> n
+// tong = tong + i;
+// if (/*dieu kien*/) { // -> {}
+
+// }
+// function tenHam() {// -> {}
+
+// }
+// for(;;) { // -> { }
+
+// }
+
+// return tong sau vòng lặp
+/*
+ 
  * 1. Viết một hàm yêu cầu người dùng nhập một số nguyên (sử dụng prompt). yêu cầu người dùng nhập lại nếu số vừa nhập không phải là số chẵn.
  * 2. Viết một hàm và gọi hàm để kiểm tra xem một số nguyên có phải là số nguyên tố.
+ * 2.2 viết hàm đếm số ước của một số nguyên, 
+ * giải thích: nếu (a % b == 0) -> a là bội số của b, b là ước của a
+ */
+function demUocSo(n) {
+    var dem = 0;
+    // đếm ...
+    return dem;
+}
+console.log(demUocSo(2));
+var soUoc = demUocSo(10);
+console.log(soUoc);
+/*
  * 3. Khai báo một array các số nguyên, gọi hàm kiểm tra số nguyên tố, in ra các số nguyên tố ở trong array.
  */
 
