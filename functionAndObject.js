@@ -117,7 +117,8 @@ var soUoc = demUocSo(10);
 console.log(soUoc);
 
 function kiemTraNguyenTo(n) {
-    if (demUocSo(n) == 2) {// sử dụng lại hàm
+    if (demUocSo(n) == 2) {
+        // sử dụng lại hàm - một function có thể được gọi từ một function khác.
         // số nguyên tố là số chỉ có 2 ước.
         console.log('la so nguyen To');
     } else {
@@ -148,6 +149,7 @@ function kiemTraNguyenTo(n) {
  *  <tên thuộc tính 2> = <giá trị thuộc tính 2>
  * };
  */
+var d = 4;
 
 var hocSinh = {
     ten: "Truong", // kiểu string
@@ -159,8 +161,36 @@ var hocSinh = {
 
         return ketQua;
     }, // kiểu function
-    diemSo: [10, 9, 2, 3] // kiểu array
+    diemSo: [10, 9, 2, 3], // kiểu array,
+    phuHuynh: {
+        ten:'phuhuynh1',
+        vo: {
+
+        }
+    }
 }
+
+hocSinh.diemSo;
+hocSinh.ten;
+console.log(hocSinh.diemSo);
+hocSinh.ten = '';
+hocSinh.phuHuynh.vo.ten = 'ss';
+console.log(hocSinh['ten']); // -> 'Truong';
+
+var array01 = [ 3, 4, 5 ];
+array01 = {
+    0: 3,
+    1: 4,
+    2: 5,
+}
+
+array01.length;
+array01.push(10);
+array01.pop();
+// f(x) = x + 1;
+array01.map(function (x) {
+    return x + 1;
+}); // 4, 5, 6
 
 // để truy xuất các phần từ của object: sử dụng cú pháp <tên biến object>.<tên thuộc tính>
 console.log(hocSinh.ten);
@@ -175,9 +205,19 @@ var luong = hocSinh.luongThang(); // vi co return
 console.log("lương tháng của " + hocSinh.ten + "  " + luong)
 // bài tập
 // 0. khai báo một object smartphone với thuộc tính ví dụ: kích thước, lượng ram,... danh sách ứng dụng,... chức năng.
-
+/**
+ * {
+ *  <tên thuộc tính>: <gía trị của thuộc tính>,
+ * }
+ * Ví dụ để khai báo một biến object:
+ * var <tên biến object> = {
+ *  <tên thuộc tính 1> = <giá trị thuộc tính 1>,
+ *  <tên thuộc tính 2> = <giá trị thuộc tính 2>
+ * };
+ */
 // ví dụ
 var iphoneXr = {
+    ram: 16,
     moKhoa: function() {
         console.log('faceid');
         console.log('mo khoa');
