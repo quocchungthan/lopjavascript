@@ -108,6 +108,15 @@ function demUocSo(n) {
 console.log(demUocSo(2));
 var soUoc = demUocSo(10);
 console.log(soUoc);
+
+function kiemTraNguyenTo(n) {
+    if (demUocSo(n) == 2) {// sử dụng lại hàm
+        // số nguyên tố là số chỉ có 2 ước.
+        console.log('la so nguyen To');
+    } else {
+        console.log('khong phai nguyen to');
+    }
+}
 /*
  * 3. Khai báo một array các số nguyên, gọi hàm kiểm tra số nguyên tố, in ra các số nguyên tố ở trong array.
  */
