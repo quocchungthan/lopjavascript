@@ -103,6 +103,13 @@ function hamCoNhieuThamSo(a, b) {
 function demUocSo(n) {
     var dem = 0;
     // đếm ...
+    // duyệt qua tất cả các số từ 1 -> n 
+    for (var i = 1; i <= n; i++) {
+        // nếu như n chia hết cho một số i bất kì -> tăng đếm lên
+        if (n % i == 0) {
+            dem = dem + 1;
+        }
+    }
     return dem;
 }
 console.log(demUocSo(2));
@@ -119,6 +126,12 @@ function kiemTraNguyenTo(n) {
 }
 /*
  * 3. Khai báo một array các số nguyên, gọi hàm kiểm tra số nguyên tố, in ra các số nguyên tố ở trong array.
+ * 4. Viết hàm với tham số là một mảng và một số nguyên N. trả về số lần lặp lại của số N.
+ * function ham01(array1, n) {
+ *  
+ * } 
+ * var solanLaplai = ham01([1, 2, 3 ,4, 5, 2, 4], 2);
+ * console.log(solanLaplai);
  */
 
 
