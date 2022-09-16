@@ -1,0 +1,121 @@
+// f(x) = 2x + 1;
+// dùng để thực hiện một tập các lệnh cùng nhau, hoặc tính toán một biểu thức phức tạp, kết hợp nhiều dòng lệnh đơn.
+// khai báo
+
+// f -> từ khoá function
+// x -> tham số x, đặt trong ngoặc tròn -> (x)
+// phép nhân -> 2 * 1
+// 2x + 1; nội dung -> var ketQua = 2 * x + 1;
+// mọi biến trong lập trình đều cần một cái tên
+// dấu = trong hàm số -> từ khoá return (nghĩa là trả về).
+
+/**
+ * function <tên hàm>(<tham số, cách nhau bởi dấu phẩy>) {
+ *  // nội dung
+ *  // <return - phần không bắt buộc>
+ * }
+ */
+
+/**
+
+// f(x) = 2x + 1;
+var ham = function (x) {
+    var ketQua = 2 * x + 1;
+
+    return ketQua;
+}
+
+một số cách khai báo khác
+
+function ham(x) {
+    var ketQua = 2 * x + 1;
+
+    return ketQua;
+}
+
+var ham = (x) => {
+    var ketQua = 2 * x + 1;
+    return ketQua;
+}
+ 
+ */
+alert();//
+/**
+ * để thực thi một hàm -> sử dụng cú pháp <tên hàm>(<đối số, cách nhau bới dấu phẩy - thành phần không bắt buộc>);
+ * ví dụ:
+ 
+ */
+ham(x); // đối với những hàm không có return
+var ketQuaTinhToan = ham(x); // đối với những hàm có return
+ham(); // không cần phải truyền đối số nếu như hàm không định nghĩa tham số
+
+// một số hàm được định nghĩa sẵn ở trong javasript:
+alert('Thông báo với user'); // đối số ở đây có thể là một biến string hoặc một giá trị string
+var thongbao = "thong bao";
+alert(thongbao);
+var x = prompt("nhập X: "); // vì function này có dữ liệu trả về
+var castToNumber = parseInt("12"); // -> chuyển kiểu dữ liệu từ string sang number: "12" -> 12
+
+/**
+ * 
+ * Bài tập:
+ * 0. Viết hàm và gọi hàm để tính toán biểu thức sau
+ * f(x) = 2x + 1;
+ * f(a, b) = 2a + b;
+ * f(n) = 1 + 2 + 3 + 4 + ... + n;
+ * 1. Viết một hàm yêu cầu người dùng nhập một số nguyên (sử dụng prompt). yêu cầu người dùng nhập lại nếu số vừa nhập không phải là số chẵn.
+ * 2. Viết một hàm và gọi hàm để kiểm tra xem một số nguyên có phải là số nguyên tố.
+ * 3. Khai báo một array các số nguyên, gọi hàm kiểm tra số nguyên tố, in ra các số nguyên tố ở trong array.
+ */
+
+
+
+/** Object - khi function là một tổ hợp của các lệnh thì object là tổ hợp của các thuộc tính, mỗi thuộc tính gồm có: Tên, giá trị, và kiểu dữ liệu (giống như biến) */
+// cú pháp:
+/**
+ * {
+ *  <tên thuộc tính>: <gía trị của thuộc tính>,
+ * }
+ * Ví dụ để khai báo một biến object:
+ * var <tên biến object> = {
+ *  <tên thuộc tính 1> = <giá trị thuộc tính 1>,
+ *  <tên thuộc tính 2> = <giá trị thuộc tính 2>
+ * };
+ */
+
+var hocSinh = {
+    ten: "Truong", // kiểu string
+    tuoi: 20, // kiểu number
+    docThan: true, // kiểu boolean
+    luongThang: function() {
+        var luongMotNam = 2000;
+        var ketQua = 2000 / 12;
+
+        return ketQua;
+    }, // kiểu function
+    diemSo: [10, 9, 2, 3] // kiểu array
+}
+
+// để truy xuất các phần từ của object: sử dụng cú pháp <tên biến object>.<tên thuộc tính>
+console.log(hocSinh.ten);
+console.log(hocSinh.tuoi);
+// với các thuộc tính của một object, có thể kết hợp với các toán tử như với biến.
+// ví dụ: phép gán, phép cộng
+hocSinh.ten = "Chung";
+var muoiNamSau = hocSinh.tuoi + 10;
+// để thực thi các thuộc tính thuộc kiểu hàm, sử dụng cú pháp  
+// <tên biến>.<tên thuộc tính hàm>();
+var luong = hocSinh.luongThang(); // vi co return
+console.log("lương tháng của " + hocSinh.ten + "  " + luong)
+// bài tập
+// 0. khai báo một object smartphone với thuộc tính ví dụ: kích thước, lượng ram,... danh sách ứng dụng,... chức năng.
+
+// ví dụ
+var iphoneXr = {
+    moKhoa: function() {
+        console.log('faceid');
+        console.log('mo khoa');
+    }
+};
+
+// 1.
