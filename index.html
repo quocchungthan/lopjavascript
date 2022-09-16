@@ -7,27 +7,21 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <input type="text" id="vector">
-    <button onclick="sapXepVaInRa()" id="button">submit</button> -->
+   <div id="background" 
+   style="width: 200px; height: 200px; border: black 1px solid;">
 
-    <input type="text" name="tenSanPham1">
-    <input type="number" id="giaTien1">
-    <input type="checkbox" id="thanhToan1">
-    <input type="text" name="tenSanPham1">
-    <input type="number" name="giaTien1">
-    <input type="checkbox" name="thanhToan1">
-    <input type="text" name="tenSanPham1">
-    <input type="number" name="giaTien1">
-    <input type="checkbox" name="thanhToan1">
-    <input type="text" name="tenSanPham1">
-    <input type="number" name="giaTien1">
-    <input type="checkbox" name="thanhToan1">
-    <button onclick="tinhTien()">Tinh tien</button>
-    <script src="script01.js">
-        
-    </script>
-    <script>
-       // chao('nam');
-    </script>
+   </div>
+   <button onclick="thayDoiMauSac()">
+        thay doi mau sac
+   </button>
+
+   <script>
+    var mau = ['red', 'pink', 'yellow', 'green'];
+    var mauHienTai = 0;
+    function thayDoiMauSac() {
+        document.getElementById('background').style.background = mau[mauHienTai];
+        mauHienTai = (mauHienTai + 1) % 4;
+    }
+   </script>
 </body>
 </html>
