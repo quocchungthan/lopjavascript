@@ -19,8 +19,8 @@
 
     <script>
         var thucThiLenhClear = function (e) {
-            sessionStorage.clear(); // không cần đối số
-            // sessionStorage.removeItem(key) -> cần một đối số key
+            localStorage.clear(); // không cần đối số
+            // localStorage.removeItem(key) -> cần một đối số key
             var divInraDanhSachNhiemVu = document.getElementById('inRaDanhSachNhiemVu'); 
             divInraDanhSachNhiemVu.innerHTML = "";
             danhSachNhiemVu = [];
@@ -28,11 +28,11 @@
 
         var danhSachNhiemVu = [];
         console.log('ngay khi trang web dc load len')
-        var danhSachDangString = sessionStorage.getItem('danhSach');
+        var danhSachDangString = localStorage.getItem('danhSach');
         if (danhSachDangString != null) { // toán tử KHÁC : !=
             danhSachNhiemVu = JSON.parse(danhSachDangString);
         }
-        //bài tập 0.3 in ra một div với mỗi nhiệm vụ lấy ra được từ sessionStorage.
+        //bài tập 0.3 in ra một div với mỗi nhiệm vụ lấy ra được từ localStorage.
         // dùng vòng lặp for -> gọi fuction inRaNhiemVu với mỗi phần từ ở trong danhSachNhiemVu
         for (var i = 0; i < danhSachNhiemVu.length; ++i) {
             inRaNhiemVu(danhSachNhiemVu[i]);
@@ -49,19 +49,19 @@
                 // bai tap 2: thu su dung tat ca cac thuoc tinh co kieu la function cua array
 
                 // Cookie -> bi gioi han dung luong 5kb
-                // WebStorage -> sessionStorage & localStorage -> 10Mb
+                // WebStorage -> localStorage & localStorage -> 10Mb
                 console.log(danhSachNhiemVu);
                 var danhSachNhiemVuDangString = JSON.stringify(danhSachNhiemVu); // chuyen array thanh string
-                sessionStorage.setItem('danhSach', danhSachNhiemVuDangString);
+                localStorage.setItem('danhSach', danhSachNhiemVuDangString);
 
                 inRaNhiemVu(tenNhiemVuMoi);
                 var theInput = e.target;
                 theInput.value = "";
                 //var danhSachDangArray = JSON.parse(danhSachNhiemVuDangString); // dao nguoc
                 // set Item vào session storage -> mở tab Application của Devtools để kiểm tra
-                // bài tập 0: suử dụng sessionStorage, để lưu danhSachNhiemVu và lấy ra khi load lại trang
+                // bài tập 0: suử dụng localStorage, để lưu danhSachNhiemVu và lấy ra khi load lại trang
             }
-            //sessionStorage;//
+            //localStorage;//
             // setItem(key, value); // 2 string
             // getItem(key);
             // removeItem(key);
@@ -72,7 +72,7 @@
         };
         // function <ten> () { }
         // bai tap 0.1: tạo ra 1 thẻ div cho mỗi nhiệm vụ mới được tạo ra. decor bằng Css. 
-        //bài tập 0.3 in ra một div với mỗi nhiệm vụ lấy ra được từ sessionStorage.
+        //bài tập 0.3 in ra một div với mỗi nhiệm vụ lấy ra được từ localStorage.
         // dùng vòng lặp for -> gọi fuction inRaNhiemVu với mỗi phần từ ở trong danhSachNhiemVu
         function inRaNhiemVu(tenNhiemVu) {
             // DOM - document object model
@@ -84,8 +84,17 @@
             // 
             var checkboxMoi = document.createElement('input');
             checkboxMoi.setAttribute('type', 'checkbox');
+            checkboxMoi.addEventListener('change', function(e) {
+                // kich hoat - triggered.
+                console.log(e.target);
+                console.log(e.target.checked);
+                if (e.target.checked) {
+                    console.log('nhiem vu da bi xoa')
+                    // danhSachNhiemVu
+                }
+            });
             banGhiNhiemVu.append(checkboxMoi);
-            
+
             banGhiNhiemVu.classList.add('item');
             //https://pomofocus.io/
             // https://github.com/quocchungthan/lopjavascript
