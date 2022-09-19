@@ -11,6 +11,10 @@
         <input type="text" name="nhiemVuMoi" onkeyup="thucThiFunction(event)">
     </div>
 
+    <div id="inRaDanhSachNhiemVu">
+
+    </div>
+
     <script>
         var danhSachNhiemVu = [];
         console.log('ngay khi trang web dc load len')
@@ -18,6 +22,8 @@
         if (danhSachDangString != null) { // toán tử KHÁC : !=
             danhSachNhiemVu = JSON.parse(danhSachDangString);
         }
+        //bài tập 0.3 in ra một div với mỗi nhiệm vụ lấy ra được từ sessionStorage.
+        // dùng vòng lặp for -> gọi fuction inRaNhiemVu với mỗi phần từ ở trong danhSachNhiemVu
         // bat su kien onKeyUp
         // bai tap 1 -> su dung tat ca cac su kien cua the input
         var thucThiFunction = function (e) {
@@ -34,6 +40,10 @@
                 console.log(danhSachNhiemVu);
                 var danhSachNhiemVuDangString = JSON.stringify(danhSachNhiemVu); // chuyen array thanh string
                 sessionStorage.setItem('danhSach', danhSachNhiemVuDangString);
+
+                inRaNhiemVu(tenNhiemVuMoi);
+                var theInput = e.target;
+                theInput.value = "";
                 //var danhSachDangArray = JSON.parse(danhSachNhiemVuDangString); // dao nguoc
                 // set Item vào session storage -> mở tab Application của Devtools để kiểm tra
                 // bài tập 0: suử dụng sessionStorage, để lưu danhSachNhiemVu và lấy ra khi load lại trang
@@ -44,7 +54,22 @@
             // removeItem(key);
             // clear();
 
+            // document.getElementByClassName ->
+
         };
+        // function <ten> () { }
+        // bai tap 0.1: tạo ra 1 thẻ div cho mỗi nhiệm vụ mới được tạo ra. decor bằng Css. 
+        //bài tập 0.3 in ra một div với mỗi nhiệm vụ lấy ra được từ sessionStorage.
+        // dùng vòng lặp for -> gọi fuction inRaNhiemVu với mỗi phần từ ở trong danhSachNhiemVu
+        function inRaNhiemVu(tenNhiemVu) {
+            // DOM - document object model
+            var divInraDanhSachNhiemVu = document.getElementById('inRaDanhSachNhiemVu'); // DOM -> xem thuộc tính thẻ
+            var banGhiNhiemVu = document.createElement('div'); // DOM -> tạo thẻ
+            banGhiNhiemVu.innerHTML = tenNhiemVu; // -> DOM chỉnh sửa thẻ.
+            
+            divInraDanhSachNhiemVu.append(banGhiNhiemVu); // -> DOM chỉnh sửa thẻ.
+        }
+        // DOM -> them sua xoa cac the HTML
     </script>
 </body>
 </html>
