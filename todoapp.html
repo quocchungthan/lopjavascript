@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div>
@@ -66,10 +67,13 @@
             var divInraDanhSachNhiemVu = document.getElementById('inRaDanhSachNhiemVu'); // DOM -> xem thuộc tính thẻ
             var banGhiNhiemVu = document.createElement('div'); // DOM -> tạo thẻ
             banGhiNhiemVu.innerHTML = tenNhiemVu; // -> DOM chỉnh sửa thẻ.
-            
+            banGhiNhiemVu.classList.add('item');
+            //https://pomofocus.io/
+            // https://github.com/quocchungthan/lopjavascript
             divInraDanhSachNhiemVu.append(banGhiNhiemVu); // -> DOM chỉnh sửa thẻ.
         }
         // DOM -> them sua xoa cac the HTML
+        // bài tập cuối: tìm hiểu các method khác của DOM
     </script>
 </body>
 </html>
