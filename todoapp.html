@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onresize="console.log('resized')">
     <div>
         <input type="text" name="nhiemVuMoi" onkeyup="thucThiFunction(event)">
         <button onclick="thucThiLenhClear(event)"> Clear </button>
@@ -16,6 +16,7 @@
     <div id="inRaDanhSachNhiemVu">
 
     </div>
+    <input id="name" type="text" on onabort="function1()">
 
     <script>
         var thucThiLenhClear = function (e) {
@@ -38,7 +39,7 @@
             inRaNhiemVu(danhSachNhiemVu[i]);
         }
         // bat su kien onKeyUp
-        // bai tap 1 -> su dung tat ca cac su kien cua the input
+       
         var thucThiFunction = function (e) {
             if (e.code == 'Enter') {
                 console.log('lenh Enter');
@@ -46,7 +47,7 @@
                 var tenNhiemVuMoi = e.target.value;
 
                 danhSachNhiemVu.push(tenNhiemVuMoi); // thuoc tinh cua kieu array -> co kieu du lieu la function
-                // bai tap 2: thu su dung tat ca cac thuoc tinh co kieu la function cua array
+                
 
                 // Cookie -> bi gioi han dung luong 5kb
                 // WebStorage -> localStorage & localStorage -> 10Mb
@@ -100,8 +101,11 @@
             // https://github.com/quocchungthan/lopjavascript
             divInraDanhSachNhiemVu.append(banGhiNhiemVu); // -> DOM chỉnh sửa thẻ.
         }
+        // bai tap 1 -> su dung tat ca cac su kien cua the input
+        // bai tap 2: thu su dung tat ca cac thuoc tinh co kieu la function cua array
         // DOM -> them sua xoa cac the HTML
         // bài tập cuối: tìm hiểu các method khác của DOM
     </script>
+    
 </body>
 </html>
