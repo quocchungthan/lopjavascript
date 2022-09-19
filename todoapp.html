@@ -10,6 +10,7 @@
 <body>
     <div>
         <input type="text" name="nhiemVuMoi" onkeyup="thucThiFunction(event)">
+        <button onclick="thucThiLenhClear(event)"> Clear </button>
     </div>
 
     <div id="inRaDanhSachNhiemVu">
@@ -17,6 +18,14 @@
     </div>
 
     <script>
+        var thucThiLenhClear = function (e) {
+            sessionStorage.clear(); // không cần đối số
+            // sessionStorage.removeItem(key) -> cần một đối số key
+            var divInraDanhSachNhiemVu = document.getElementById('inRaDanhSachNhiemVu'); 
+            divInraDanhSachNhiemVu.innerHTML = "";
+            danhSachNhiemVu = [];
+        }
+
         var danhSachNhiemVu = [];
         console.log('ngay khi trang web dc load len')
         var danhSachDangString = sessionStorage.getItem('danhSach');
@@ -25,6 +34,9 @@
         }
         //bài tập 0.3 in ra một div với mỗi nhiệm vụ lấy ra được từ sessionStorage.
         // dùng vòng lặp for -> gọi fuction inRaNhiemVu với mỗi phần từ ở trong danhSachNhiemVu
+        for (var i = 0; i < danhSachNhiemVu.length; ++i) {
+            inRaNhiemVu(danhSachNhiemVu[i]);
+        }
         // bat su kien onKeyUp
         // bai tap 1 -> su dung tat ca cac su kien cua the input
         var thucThiFunction = function (e) {
@@ -65,8 +77,15 @@
         function inRaNhiemVu(tenNhiemVu) {
             // DOM - document object model
             var divInraDanhSachNhiemVu = document.getElementById('inRaDanhSachNhiemVu'); // DOM -> xem thuộc tính thẻ
+            // sử dụng document.createElement để tạo checkbox và append vào banGhiNhiemVu
+            
             var banGhiNhiemVu = document.createElement('div'); // DOM -> tạo thẻ
             banGhiNhiemVu.innerHTML = tenNhiemVu; // -> DOM chỉnh sửa thẻ.
+            // 
+            var checkboxMoi = document.createElement('input');
+            checkboxMoi.setAttribute('type', 'checkbox');
+            banGhiNhiemVu.append(checkboxMoi);
+            
             banGhiNhiemVu.classList.add('item');
             //https://pomofocus.io/
             // https://github.com/quocchungthan/lopjavascript
