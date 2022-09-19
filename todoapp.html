@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" name="nhiemVuMoi" onkeyup="thucThiFunction(event)">
+    </div>
+
+    <script>
+        var danhSachNhiemVu = [];
+        // bat su kien onKeyUp
+        // bai tap 1 -> su dung tat ca cac su kien cua the input
+        var thucThiFunction = function (e) {
+            if (e.code == 'Enter') {
+                console.log('lenh Enter');
+                console.log(e.target.value); // truy cap thuoc tinh cua object
+                var tenNhiemVuMoi = e.target.value;
+
+                danhSachNhiemVu.push(tenNhiemVuMoi); // thuoc tinh cua kieu array -> co kieu du lieu la function
+                // bai tap 2: thu su dung tat ca cac thuoc tinh co kieu la function cua array
+
+                // Cookie -> bi gioi han dung luong 5kb
+                // WebStorage -> sessionStorage & localStorage -> 10Mb
+                console.log(danhSachNhiemVu);
+                // suử dụng sessionStorage, để lưu danhSachNhiemVu và lấy ra khi load lại trang
+            }
+            //sessionStorage;//
+            // setItem(key, value);
+            // getItem(key);
+            // removeItem(key);
+            // clear();
+
+        };
+    </script>
+</body>
+</html>
