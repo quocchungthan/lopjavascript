@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>geolocation & canvas</title>
+</head>
+
+<style>
+    canvas  {
+        border: 1px solid blue;
+    }
+</style>
+<!-- bootstrap jquery, bai tap cuoi mon -->
+<body>
+    <canvas id="container" width="600" height="300"></canvas>
+    <script>
+        
+        // var bird = {
+        //     x: 150,
+        //     y: 150,
+        //     banKinh: 15
+        // }
+
+        // var pipes = [
+        //     {
+        //         x: 150,
+        //         chieuCao: 100,
+        //     },
+        //     {
+        //         x: 250,
+        //         chieuCao: 120,
+        //     },
+        //     {
+        //         x: 350,
+        //         chieuCao: 70,
+        //     },
+
+        //     {
+        //         x: 550,
+        //         chieuCao: 70,
+        //     }
+        // ];
+
+        // const canvas = document.getElementById('container');
+        // var ctext = canvas.getContext(
+        //     '2d'
+        // );
+        // var ctext = canvas.getContext('2d');
+
+        // function background() {
+        //     ctext.rect(0, 0, 600, 300);
+        //     ctext.fillStyle = "Magenta";
+        //     ctext.fill();
+        // }
+
+        // function veChim() {
+        //     ctext.beginPath();
+        //     ctext.fillStyle = "blue";
+        //     ctext.arc(bird.x, bird.y, bird.banKinh, 0, 2 * Math.PI);
+        //     ctext.stroke();
+        // }
+
+        // function veCot() {
+        //     for (var i = 0; i < pipes.length; i ++) {
+        //         ctext.beginPath();
+        //         ctext.strokeRect(pipes[i].x, 0, 30, pipes[i].chieuCao);
+        //         ctext.strokeRect(pipes[i].x, 300, 30, -(300 - pipes[i].chieuCao - 100));
+        //         ctext.strokeStyle = "green";
+        //         ctext.fill();
+        //     }
+        // }
+
+        // background();
+        // veChim();
+        // veCot();
+
+        // var diChuyen = function(e) {
+            
+        //     for (var i = 0; i < pipes.length; i++) {
+        //         pipes[i].x = pipes[i].x - 5; 
+        //     }
+        //     background();
+        //     veChim();
+        //     veCot();
+        // }
+
+        // setInterval(() => {
+        //     bird.y = bird.y + 2;
+        //     diChuyen();
+        // }, 50);
+
+        // setInterval(() => {
+        //     var newPipe = {
+        //         chieuCao: Math.random() * 150,
+        //         x: pipes[pipes.length - 1].x + 100,
+        //     };
+        //     pipes.push(newPipe);
+        // }, 500);
+
+        // document.addEventListener('keyup', function (e){
+        //     if (e.code == 'Enter') {
+        //         bird.y = bird.y - 15;
+        //     }
+        // });
+
+        
+    </script>
+</body>
+</html>
+<!-- 
+    ung dung:
+        ve game
+        ve chart
+        ve duong tren ban do
+        whiteboard
+    syntax:
+        Game or Chart?
+        
+        functions:
+            clear
+            draw a bird -> object
+            draw a pipe -> object & array
+        ve hinh tron:
+        ctext.arc(100, 75, 50, 0, 2 * Math.PI);
+
+        catch event de cho chim di chuyen toi.
+        stroke & fill
+            
+
+
+        <script>
+        var x = document.getElementById("demo");
+        function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+        }
+
+        function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+        }
+        </script>
+
+        function showError(error) {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+            case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+            case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+            case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break;
+        }
+        }
+
+        <script>
+        var x = document.getElementById("demo");
+        function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+        }
+        function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+        }
+
+        https://www.google.com/maps/dir/16.0410054,108.2206567/
+        </script>
+ -->
