@@ -16,7 +16,83 @@
 <body>
     <canvas id="container" width="600" height="300"></canvas>
     <script>
+        var bong = {
+            x: 100,
+            y: 100,
+        };
+
+        var player1 = {
+            x: 60,
+            y: 90,
+            chieuDai: 100
+        }
+
+        var player2 = {
+            x: 600 - 60,
+            y: 90,
+            chieuDai: 100
+        }
+
+        var khungVe = document.getElementById('container');
+        var butVe = khungVe.getContext('2d'); //object context
+
+        // canvas -> khung 
+        // context -> but ve 
+
+        function veBong() {
+            butVe.beginPath(); // dat but xuong
+            butVe.fillStyle = "blue"; // set màu
+            butVe.arc(bong.x, bong.y, 6, 0, 2 * Math.PI); // định dạng hình
+            // x, y, 
+            butVe.stroke(); // ket thuc
+        }
+
+        function veThanhGo(nguoiChoi) {
+            butVe.beginPath(); // dat but xuong
+            butVe.fillStyle = "blue"; // set màu
+            // butVe.strokeStyle = "red";
+            butVe.rect(nguoiChoi.x, nguoiChoi.y, 5, nguoiChoi.chieuDai);// x, y, chieu rong, chieu cao
+            // triangle ->
+            // line -> 
+            // duong cong -> 
+            butVe.stroke(); // ket thuc
+            butVe.fill(); // làm đầy
+        }
+
+        function veTamGiac() {
+            butVe.beginPath(); // dat but xuong
+            butVe.fillStyle = "blue"; // set màu
+            butVe.strokeStyle = "red";
+            butVe.moveTo(20, 20); // x, y
+            butVe.lineTo(120, 220); // x, y /// 
+            butVe.lineTo(320, 220); // x, y
+            butVe.lineTo(20, 20); // x, y
+            // x, y, chieu rong, chieu cao
+            // triangle ->
+            // line -> 
+            // duong cong -> 
+            butVe.stroke(); // ket thuc
+        }
+
         
+        veBong();
+        veThanhGo(player1);
+        veThanhGo(player2);
+
+        setInterval(() => {
+            bong.x = bong.x + 15;
+            bong.y = bong.y - 15;
+            butVe.clearRect(0, 0, khungVe.width, khungVe.height); // xoa toan bo canvas.
+            veThanhGo(player1);
+            veThanhGo(player2);
+            veBong();
+        }, 500); // mỗi 500 milisecond -> thì làm gì đó
+        // veTamGiac();
+
+        // đường cong với độ cong = 2 Pi
+
+        // ve mot hinh tron
+
         // var bird = {
         //     x: 150,
         //     y: 150,
