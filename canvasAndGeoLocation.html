@@ -14,6 +14,7 @@
 </style>
 <!-- bootstrap jquery, bai tap cuoi mon -->
 <body>
+    <!-- bài tập bắt sự kiện onkeyup của body -> nếu key code == "Up" -> vị trí y của player 1 có sẽ bị di chuyển lên, và ngược lại với key code == "Down"  -->
     <canvas id="container" width="600" height="300"></canvas>
     <script>
         var bong = {
@@ -98,6 +99,19 @@
             if (/* bong da cham tran*/ bong.x >= khungVe.width) {
                 bong.tocDoBongX = -bong.tocDoBongX;
             }
+            var chamVaoThanhGo = 
+            (bong.y >= player1.y && bong.y < player1.y + player1.chieuDai) 
+            && (bong.x > player1.x && bong.x < player1.x + 5);
+            if (/*bong cham vao thanh go*/ chamVaoThanhGo) {
+                bong.tocDoBongX = -bong.tocDoBongX;
+            }
+
+            var chamVaoThanhGo2 = 
+            (bong.y >= player2.y && bong.y < player2.y + player2.chieuDai) 
+            && (bong.x > player2.x && bong.x < player2.x + 5);
+            if (/*bong cham vao thanh go*/ chamVaoThanhGo2) {
+                bong.tocDoBongX = -bong.tocDoBongX;
+            }
 //  tuong tu voi bong.X -> so sanh voi width của khungVe
             
 
@@ -105,7 +119,7 @@
             veThanhGo(player1);
             veThanhGo(player2);
             veBong();
-        }, 50); // sau mỗi 50 milisecond -> thì làm gì đó
+        }, 30); // sau mỗi 50 milisecond -> thì làm gì đó
         // veTamGiac();
 
         // đường cong với độ cong = 2 Pi
