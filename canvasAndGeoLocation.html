@@ -15,15 +15,96 @@
 <!-- bootstrap jquery, bai tap cuoi mon -->
 <body onkeyup="diChuyenThanhGo(event)">
     <!-- bài tập bắt sự kiện onkeyup của body -> nếu key code == "Up" -> vị trí y của player 1 có sẽ bị di chuyển lên, và ngược lại với key code == "Down"  -->
+    <!-- 
+        game brick
+        // getElement của canvas -> khung vẽ
+        // getContext -> bút vẽ
+        // vuông, tam giác, tròn: beginPath()... strokeStyle, fillStyle -> chỉ định màu. dùng moveTo, lineTo, arc, rect để định hình object ở trên canvas: tham số (x, y). -> butVe.stoke() butVe.fill().
+        // setInterval () -> lặp lại một hành động sau bao nhiêu thời gian đó
+        // 2 tham số: hành động, thời gian interval để lặp
+        // khi một đối tượng đã được di chuyển
+        // -> xoá sạch canvas rồi vẽ lại : clearCanvas  -> vẽ lại -> bộ hành động này thì phải được code trong hành động của setInvertal.
+        // sự kiện của Key -> lấy keycode ra và so sánh "KeyS", "KeyW"
+        // lệnh điệu kiện rẻ nhánh if else để điều hướng game ví dụ như là di chuyển object bằng cách thay đổi X, Y của nó
+        // vòng lặp. toán tử...
+
+        // bài tập: viết một cái game brick dựa trên code của game pingpong.
+        // **** -> hinh duong thang
+
+        // ** -> hinh vuong
+        // **
+
+        // ** -> hinh chu Z
+        //  **
+
+        // *** -> hinh chu T
+        //  *
+
+        // bắt sự kiện của phím -> gọi function xoayHinh 
+        bước 1: -> lấy khung vẽ, lấy bút vẽ
+        bước 2: viết function vẽ hình vuông: chiều dài và chiệu rộng bằng nhau.
+        vẽ 4 hình vuông có chung Y khác X
+     -->
     <canvas id="container" width="600" height="300"></canvas>
     <script>
+        var thanhNgang = [
+            {
+                y: 10,
+                x: 10
+            },
+            {
+                y: 10,
+                x: 20
+            },
+            {
+                y: 10,
+                x: 30
+            },
+            {
+                y: 10,
+                x: 40
+            },
+        ];
+
+        var chuT = [
+            {
+                y: 40,
+                x: 10
+            },
+            {
+                y: 40,
+                x: 20
+            },
+            {
+                y: 40,
+                x: 30
+            },
+            {
+                y: 50,
+                x: 20
+            },
+        ];
+
+        function veHinhVuong(toaDo) {
+            butVe.beginPath(); // dat but xuong
+            butVe.fillStyle = "blue"; // set màu
+            // butVe.strokeStyle = "red";
+            butVe.rect(toaDo.x, toaDo.y, 10, 10);// x, y, chieu rong, chieu cao
+            // triangle ->
+            // line -> 
+            // duong cong -> 
+            butVe.stroke(); // ket thuc
+            butVe.fill(); // làm đầy
+        }
+
         var diChuyenThanhGo = function (e) {
             var keyCode = e.code; // "Enter", "ArrowUp", "ArrowDown"
             console.log(e);
             if (keyCode == "ArrowUp") {
                 player1.y = player1.y - 10;
             }
-
+            // MERN -> 
+            // MongDB <-> Nodejs -> Express React -> JS
             if (keyCode == "ArrowDown") {
                 player1.y = player1.y + 10;
             }
@@ -57,7 +138,13 @@
 
         var khungVe = document.getElementById('container');
         var butVe = khungVe.getContext('2d'); //object context
+        for(var i = 0; i < thanhNgang.length; i ++) {
+            veHinhVuong(thanhNgang[i]);
+        }
 
+        for(var i = 0; i < chuT.length; i ++) {
+            veHinhVuong(chuT[i]);
+        }
         // canvas -> khung 
         // context -> but ve 
 
@@ -97,48 +184,48 @@
         }
 
         
-        veBong();
-        veThanhGo(player1);
-        veThanhGo(player2);
-// https://github.com/quocchungthan/lopjavascript
-        setInterval(() => {
-            bong.x = bong.x + bong.tocDoBongX;
-            bong.y = bong.y + bong.tocDoBongY;
-            if (/* bong da cham tran*/ bong.y <= 0) {
-                bong.tocDoBongY = -bong.tocDoBongY;
-            }
+//         veBong();
+//         veThanhGo(player1);
+//         veThanhGo(player2);
+// // https://github.com/quocchungthan/lopjavascript
+//         setInterval(() => {
+//             bong.x = bong.x + bong.tocDoBongX;
+//             bong.y = bong.y + bong.tocDoBongY;
+//             if (/* bong da cham tran*/ bong.y <= 0) {
+//                 bong.tocDoBongY = -bong.tocDoBongY;
+//             }
 
-            if (/* bong da cham tran*/ bong.y >= khungVe.height) {
-                bong.tocDoBongY = -bong.tocDoBongY;
-            }
-            if (/* bong da cham tran*/ bong.x <= 0) {
-                bong.tocDoBongX = -bong.tocDoBongX;
-            }
+//             if (/* bong da cham tran*/ bong.y >= khungVe.height) {
+//                 bong.tocDoBongY = -bong.tocDoBongY;
+//             }
+//             if (/* bong da cham tran*/ bong.x <= 0) {
+//                 bong.tocDoBongX = -bong.tocDoBongX;
+//             }
 
-            if (/* bong da cham tran*/ bong.x >= khungVe.width) {
-                bong.tocDoBongX = -bong.tocDoBongX;
-            }
-            var chamVaoThanhGo = 
-            (bong.y >= player1.y && bong.y < player1.y + player1.chieuDai) 
-            && (bong.x > player1.x && bong.x < player1.x + 5);
-            if (/*bong cham vao thanh go*/ chamVaoThanhGo) {
-                bong.tocDoBongX = -bong.tocDoBongX;
-            }
+//             if (/* bong da cham tran*/ bong.x >= khungVe.width) {
+//                 bong.tocDoBongX = -bong.tocDoBongX;
+//             }
+//             var chamVaoThanhGo = 
+//             (bong.y >= player1.y && bong.y < player1.y + player1.chieuDai) 
+//             && (bong.x > player1.x && bong.x < player1.x + 5);
+//             if (/*bong cham vao thanh go*/ chamVaoThanhGo) {
+//                 bong.tocDoBongX = -bong.tocDoBongX;
+//             }
 
-            var chamVaoThanhGo2 = 
-            (bong.y >= player2.y && bong.y < player2.y + player2.chieuDai) 
-            && (bong.x > player2.x && bong.x < player2.x + 5);
-            if (/*bong cham vao thanh go*/ chamVaoThanhGo2) {
-                bong.tocDoBongX = -bong.tocDoBongX;
-            }
-//  tuong tu voi bong.X -> so sanh voi width của khungVe
+//             var chamVaoThanhGo2 = 
+//             (bong.y >= player2.y && bong.y < player2.y + player2.chieuDai) 
+//             && (bong.x > player2.x && bong.x < player2.x + 5);
+//             if (/*bong cham vao thanh go*/ chamVaoThanhGo2) {
+//                 bong.tocDoBongX = -bong.tocDoBongX;
+//             }
+// //  tuong tu voi bong.X -> so sanh voi width của khungVe
             
 
-            butVe.clearRect(0, 0, khungVe.width, khungVe.height); // xoa toan bo canvas.
-            veThanhGo(player1);
-            veThanhGo(player2);
-            veBong();
-        }, 30); // sau mỗi 50 milisecond -> thì làm gì đó
+//             butVe.clearRect(0, 0, khungVe.width, khungVe.height); // xoa toan bo canvas.
+//             veThanhGo(player1);
+//             veThanhGo(player2);
+//             veBong();
+//         }, 30); // sau mỗi 50 milisecond -> thì làm gì đó
         // veTamGiac();
 
         // đường cong với độ cong = 2 Pi
