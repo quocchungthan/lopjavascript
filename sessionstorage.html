@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div id="background" 
+   style="width: 200px; height: 200px; border: black 1px solid;">
+
+   </div>
+
+   <input type="text" name="username" onkeyup="luuVaoSessionStorage(event)">
+   <script>
+        if (window.sessionStorage) {
+            var data = sessionStorage.getItem('name');;
+            var block = document.getElementById('background');
+            block.innerHTML = "hello " + data;
+        } else {
+            console.log('sessionStorage is not supported');
+        }
+
+        function luuVaoSessionStorage(e) {
+            var noiDungCuaInput = e.target.value;
+            sessionStorage.setItem('name', noiDungCuaInput);
+        }
+   </script>
+</body>
+</html>

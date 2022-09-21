@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="container" width="500" height="500"></canvas>
+    <script>
+        const canvas = document.getElementById('container');
+        var ctext = canvas.getContext(
+            '2d'
+        );
+        var ctext = canvas.getContext('2d');
+         ctext.rect(30, 50, 150, 220);
+         ctext.fillStyle = "Magenta";
+         ctext.fill();
+         ctext.lineWidth = 5;
+         ctext.strokeStyle = 'black';
+         ctext.stroke();
+         ctext.beginPath();
+        ctext.moveTo(0, 0);
+        ctext.lineTo(300, 150);
+        ctext.lineTo(400, 370);
+        ctext.stroke();
+        //ctext.beginPath();
+        ctext.lineTo(100, 340);
+        ctext.stroke();
+    </script>
+</body>
+</html>

@@ -19,6 +19,8 @@
         var bong = {
             x: 100,
             y: 100,
+            tocDoBongX: 4,
+            tocDoBongY: -4,
         };
 
         var player1 = {
@@ -78,15 +80,32 @@
         veBong();
         veThanhGo(player1);
         veThanhGo(player2);
-
+// https://github.com/quocchungthan/lopjavascript
         setInterval(() => {
-            bong.x = bong.x + 15;
-            bong.y = bong.y - 15;
+            bong.x = bong.x + bong.tocDoBongX;
+            bong.y = bong.y + bong.tocDoBongY;
+            if (/* bong da cham tran*/ bong.y <= 0) {
+                bong.tocDoBongY = -bong.tocDoBongY;
+            }
+
+            if (/* bong da cham tran*/ bong.y >= khungVe.height) {
+                bong.tocDoBongY = -bong.tocDoBongY;
+            }
+            if (/* bong da cham tran*/ bong.x <= 0) {
+                bong.tocDoBongX = -bong.tocDoBongX;
+            }
+
+            if (/* bong da cham tran*/ bong.x >= khungVe.width) {
+                bong.tocDoBongX = -bong.tocDoBongX;
+            }
+//  tuong tu voi bong.X -> so sanh voi width của khungVe
+            
+
             butVe.clearRect(0, 0, khungVe.width, khungVe.height); // xoa toan bo canvas.
             veThanhGo(player1);
             veThanhGo(player2);
             veBong();
-        }, 500); // mỗi 500 milisecond -> thì làm gì đó
+        }, 50); // sau mỗi 50 milisecond -> thì làm gì đó
         // veTamGiac();
 
         // đường cong với độ cong = 2 Pi
