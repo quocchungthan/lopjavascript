@@ -13,10 +13,22 @@
     }
 </style>
 <!-- bootstrap jquery, bai tap cuoi mon -->
-<body>
+<body onkeyup="diChuyenThanhGo(event)">
     <!-- bài tập bắt sự kiện onkeyup của body -> nếu key code == "Up" -> vị trí y của player 1 có sẽ bị di chuyển lên, và ngược lại với key code == "Down"  -->
     <canvas id="container" width="600" height="300"></canvas>
     <script>
+        var diChuyenThanhGo = function (e) {
+            var keyCode = e.code; // "Enter", "ArrowUp", "ArrowDown"
+            console.log(e);
+            if (keyCode == "ArrowUp") {
+                player1.y = player1.y - 10;
+            }
+
+            if (keyCode == "ArrowDown") {
+                player1.y = player1.y + 10;
+            }
+        }
+
         var bong = {
             x: 100,
             y: 100,
