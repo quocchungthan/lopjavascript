@@ -8,4 +8,4 @@ Sử dụng HTML/CSS/Javascript để viết một app ToDo List. 
 
 Tham khảo: [pomofocus](https://pomofocus.io/)
 
-https://github.com/quocchungthan/lopjavascript/baitap.md
+https://github.com/quocchungthan/lopjavascript/blob/master/baitap.md
