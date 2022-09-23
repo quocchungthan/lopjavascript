@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+    /* web responsiveness -> flexbox */
+    /* container -> .row */
+    div.mothang, div.navbar {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    div.navbar {
+        width: 100%;
+    }
+
+    /* sanpham - element -> col */
+    /* .col- */
+    .sanpham {
+        border: solid 1px black;
+        aspect-ratio: 1;
+    }
+    /* breakpoints */ 
+    @media screen and (max-width: 1000px) {
+        /* thi se render ra mot san pham tren mot hang */
+        div.mothang::before {
+            /* content: 'desktop' */
+        }
+
+        div.sanpham {
+            width: calc(100% / 3 - 2px); 
+            /* 33 * 3  */
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        /* thi se render ra mot san pham tren mot hang */
+        div.mothang::before {
+            /* content: 'tablet' */
+        }
+
+        div.sanpham {
+            width: calc(50% - 2px);
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        /* thi se render ra mot san pham tren mot hang */
+        div.mothang::before {
+            /* content: 'mobile' */
+        }
+
+        div.sanpham {
+            width: 100%;
+        }
+
+        div.navbar {
+            order: 12;
+        }
+    }
+
+</style>
+<body>
+    <!-- https://github.com/quocchungthan/lopjavascript/blob/master/baitap.md -->
+
+    <!-- flex box -->
+    <div class="mothang">
+        <div class="navbar">
+            navbar
+        </div>
+        <div class="sanpham">
+            chữ
+        </div>
+        <div class="sanpham">
+            chữ
+        </div>
+        <div class="sanpham">
+            chữ
+        </div>
+        <div class="sanpham">
+            chữ
+        </div>
+    </div>
+    <!-- 12 -> 12 / 2 -> 6-->
+    <div class="col-sm-6">
+        su dung flexbox cua bootsrap
+    </div>
+</body>
+</html>
