@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> PRACTICE IN CLASS </title>
+    <style rel="text/css" type="stylesheet">
+      h1 {
+        margin:10px;
+      }
+  </style>
+</head>
+<body style="background-color: aquamarine;">
+ <h1> TO DO LIST </h1>
+<div>
+    
+    <input type="text" onkeyup="thucThiMotFunction(event)">
+    <button onclick="thucThiMotLenhSearch(event)"> Search </button>
+</div>
+<div id="inRaDanhSachNhungNhiemVu"></div>
+
+<script>
+    var thucThiMotLenhAdd = function(e){
+    localStorage.Search();
+    var divInRaDanhSachNhungNhiemVu = document.getElementById('inRaDanhSachNhungNhiemVu');
+    divInRaDanhSachNhungNhiemVu.innerHTML="";
+    danhSachNhungNhiemVu = [];
+    }
+    var danhSachNhungNhiemVu = [];
+    console.log('Sau khi Reload trang');
+    var danhSachDangString =localStorage.getItem('danhSach');
+        if (danhSachDangString != null){
+             danhSachNhungNhiemVu = JSON.parse(danhSachDangString);
+        }
+        for (var i=0;i< danhSachNhungNhiemVu.length; ++i) {
+            inRaNhiemVu(danhSachNhungNhiemVu[i]);
+        }
+
+        var thucThiMotFunction = function (e){
+        if(e.code == 'Enter'){
+            console.log('lenh Enter');
+            console.log(e.target.value);
+            var tenNhungNhiemVuMoi = e.target.value;
+            danhSachNhungNhiemVu.push(tenNhungNhiemVuMoi);
+            console.log(danhSachNhungNhiemVu);
+            var danhSachNhungNhiemVuDangString =JSON.stringify(danhSachNhungNhiemVu);
+            localStorage.setItem('danhSach', danhSachNhungNhiemVuDangString); 
+            inRaNhiemVu(tenNhungNhiemVuMoi);
+            var theInput =e.target;
+            theInput.value="";
+        }
+        };
+
+        function inRaNhiemVu(tenNhungNhiemVu) {
+            var divInRaDanhSachNhungNhiemVu = document.getElementById('inRaDanhSachNhungNhiemVu');
+            var checkBoxMoi = document.createElement('input', {type: 'checkbox'});
+            checkBoxMoi.setAttribute('type','checkbox');
+            checkBoxMoi.addEventListener('change',function(e){
+                console.log(e.target);
+                console.log(e.target.checked);
+                if (e.target.checked){
+                    console.log('nhiem vu da bi xoa')
+                }
+            });
+        
+         var banGhiNhungNhiemVu = document.createElement('div');
+         banGhiNhungNhiemVu.innerHTML = tenNhungNhiemVu;
+         banGhiNhungNhiemVu.classList.add('item');
+         divInRaDanhSachNhungNhiemVu.append(banGhiNhungNhiemVu);
+         banGhiNhungNhiemVu.append(checkBoxMoi);
+        };
+        
+
+
+
+    
+    
+</script>
+  
+</body>
+</html>

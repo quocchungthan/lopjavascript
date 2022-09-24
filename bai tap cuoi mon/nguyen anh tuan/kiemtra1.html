@@ -1,0 +1,179 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <div id="app-test">
+    <div class="app_header">
+        <div class="banner_left">
+        <div class="name_app">
+            <p style="font-weight: bold; font-size: 50px;">Pomofocus</p>
+        </div>
+        </div>
+
+        <div class="banner_right">
+            <div class="button">Report</div>
+
+            <div class="button">Setting</div>
+
+            <div class="button">Login</div>
+        </div>
+    </div>
+
+    <div class="app_content">
+        <h1>Pomofocus Timer</h1>
+        <div id="container">
+        <p id="work" class="label">Time:</p>
+
+        <div id="work-timer" class="timer">
+            <p id="w_minutes">25</p>
+            <p class="semicolon">:</p>
+            <p id="w_seconds">00</p>
+        </div>
+
+        <div class="time_button">
+        	<button id="start" class="btn">Start</button>
+        	<button id="stop" class="btn">Pause</button>
+        	<button id="reset" class="btn">Reset</button>
+		</div>
+    </div>
+    </div>
+    
+    <div class="setTask">
+    <div class="nhiemVu" style="margin-left: 55px;">
+        <input type="text" placeholder="Nhập tên nhiệm vụ" name="nhiemVuMoi" onkeyup="thucThiFunction(event)"><br>
+        <button>Thêm Nhiệm Vụ</button>
+        <button>Sửa Nhiệm Vụ</button>
+        <button onclick="thucThiLenhClear(event)"> Xóa nhiệm vụ </button>   
+    </div>
+
+
+    </div>
+    <div id="inRaDanhSachNhiemVu">
+
+    </div>
+
+    </div>
+
+    <script>
+        var start = document.getElementById('start');
+        var stop = document.getElementById('stop');
+        var reset = document.getElementById('reset');
+
+        var wm = document.getElementById('w_minutes');
+        var ws = document.getElementById('w_seconds');
+
+        var bm = document.getElementById('b_minutes');
+        var bs = document.getElementById('b_seconds');
+
+        var startTimer;
+
+        start.addEventListener('click', function(){
+            if(startTimer === undefined){
+                startTimer = setInterval(timer, 1000)
+            } else {
+                alert("Timer is already running");
+            }
+        })
+
+        reset.addEventListener('click', function(){
+            wm.innerText = 25;
+            ws.innerText = "00";
+        
+            bm.innerText = 5;
+            bs.innerText = "00";
+        
+            document.getElementById('counter').innerText = 0;
+            stopInterval()
+            startTimer = undefined;
+        })
+
+        stop.addEventListener('click', function(){
+            stopInterval()
+            startTimer = undefined;
+        })
+
+
+        function timer(){
+    if(ws.innerText != 0){
+        ws.innerText--;
+    } else if(wm.innerText != 0 && ws.innerText == 0){
+        ws.innerText = 59;
+        wm.innerText--;
+    }
+
+}
+
+function stopInterval(){
+    clearInterval(startTimer);
+}
+
+
+
+    // Thêm, sửa, xóa
+    var thucThiLenhClear = function (e) {
+    localStorage.clear(); 
+    var divInraDanhSachNhiemVu = document.getElementById('inRaDanhSachNhiemVu'); 
+    divInraDanhSachNhiemVu.innerHTML = "";
+    danhSachNhiemVu = [];
+}
+
+    var danhSachNhiemVu = [];
+    console.log('ngay khi trang web dc load len')
+    var danhSachDangString = localStorage.getItem('danhSach');
+    if (danhSachDangString != null) { 
+        danhSachNhiemVu = JSON.parse(danhSachDangString);
+    }
+    
+    for (var i = 0; i < danhSachNhiemVu.length; ++i) {
+        inRaNhiemVu(danhSachNhiemVu[i]);
+    }
+
+var thucThiFunction = function (e) {
+    if (e.code == 'Enter') {
+        console.log('lenh Enter');
+        console.log(e.target.value); 
+        var tenNhiemVuMoi = e.target.value;
+        danhSachNhiemVu.push(tenNhiemVuMoi); 
+        console.log(danhSachNhiemVu);
+        var danhSachNhiemVuDangString = JSON.stringify(danhSachNhiemVu); 
+        localStorage.setItem('danhSach', danhSachNhiemVuDangString);
+        inRaNhiemVu(tenNhiemVuMoi);
+        var theInput = e.target;
+        theInput.value = "";
+
+    }
+
+
+};
+
+function inRaNhiemVu(tenNhiemVu) {
+
+    var divInraDanhSachNhiemVu = document.getElementById('inRaDanhSachNhiemVu');    
+    var banGhiNhiemVu = document.createElement('div'); 
+    banGhiNhiemVu.innerHTML = tenNhiemVu; 
+    var checkboxMoi = document.createElement('input');
+    checkboxMoi.setAttribute('type', 'checkbox');
+    checkboxMoi.addEventListener('change', function(e) {
+        console.log(e.target);
+        console.log(e.target.checked);
+        if (e.target.checked) {
+            console.log('nhiem vu da bi xoa')
+
+        }
+    });
+    banGhiNhiemVu.append(checkboxMoi);
+    banGhiNhiemVu.classList.add('item');
+    divInraDanhSachNhiemVu.append(banGhiNhiemVu); 
+}
+
+    </script>
+</body>
+</html>

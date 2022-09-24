@@ -1,0 +1,34 @@
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+.container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: linear-gradient(rgba(128, 237, 153, 0.8), rgba(56, 163, 165, 0.7));
+	padding: 6rem 4rem;
+	box-shadow: 0 0 3em 1.5em lightblue;
+}
+.container p {
+	font-size: 5rem;
+	color: rgb(34, 87, 122);
+	margin-left: 2.5rem;
+}
+.container p span {
+	margin-inline: 1rem;
+}
+.buttons {
+	display: flex;
+	margin-top: 6rem;
+}
+.buttons button {
+	font-size: 1.5rem;
+	padding: 0.3rem 2rem;
+	margin-inline: 1rem;
+	border-radius: 7rem;
+	background: linear-gradient(rgba(56, 163, 165, 0.7), rgba(128, 237, 153, 0.8));
+	cursor: pointer;
+}

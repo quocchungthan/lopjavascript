@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./BaiTapKTJS.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="nav">
+        <div class="nav__icon">
+          <i class="fa-solid fa-circle-check"></i>
+          <h2 class="nav__name">Clock's</h2>
+        </div>
+        <ul class="nav__list">
+          <li>
+            <i class="fa-solid fa-flag"></i>
+            Report
+          </li>
+          <li>
+            <i class="fa-regular fa-gear"></i>
+            Setting
+          </li>
+          <li>
+            <i class="fa-regular fa-user"></i>
+            Login
+          </li>
+        </ul>
+      </div>
+
+      <div class="session">
+        <div class="session__general">
+            <div class="session__main">
+                <div class="session__list">
+                    <div class="session__item">
+                        <button>Clock's</button>
+                        <button>Short</button>
+                        <button>Long</button>
+                    </div>
+                </div>
+                <h1 class="session__time">
+                  <input type="text" name="" id="hour" value="10">
+                  <input type="text" name="" id="minute" value="00">
+                </h1>
+                <button id="input" class="input__start" onclick="batDau()">
+                  <p class="button__start">Bắt đầu</p>
+                  <p class="button__stop">Kết thúc</p>
+                </button>
+            </div>
+            <div class="session__submit">
+                <button id="addTask" type="submit" onclick="themTask()" >ADD TASK</button>
+                <!-- <button type="submit" >Sửa</button> 
+                <button type="submit" onclick="xoaTask()">Xóa</button> -->
+            </div>
+
+            <div id="session__add">
+              <!-- <div class="session__active">
+              <input class="" type="text" placeholder="What are your working on?" autofocus>
+              <div class="session__button">
+                <button type="submit" value="Cancel">Xóa</button>
+                <button type="submit" value="Save">Lưu</button>
+              </div>
+            </div> -->
+            </div>
+            
+        </div>
+        </div>
+      </div>
+    </div>
+    <script src="./BaiTapKTJS.js"></script>
+  </body>
+</html>

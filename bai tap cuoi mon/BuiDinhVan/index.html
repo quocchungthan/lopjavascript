@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./main.js"></script>
+  </head>
+  <body>
+    
+    <header>
+      <div id="mainHeader">
+        <div class="logo">
+          <a href="#" class="logoApp">
+            <h2 style="font-size: 20px; display: inline-block" class="titleApp">
+              Pomofocus
+            </h2>
+          </a>
+        </div>
+        <div class="multi-media">
+          <button class="multi-item">
+            <span class="text-media">Report</span>
+          </button>
+          <button class="multi-item">
+            <span class="text-media">Setting</span>
+          </button>
+          <button class="multi-item">
+            <span class="text-media">Login</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    
+
+    <section>
+      <div class="clock-return-main">
+        <div class="clock-return">
+          <div class="timer-string">25:00</div>
+          <div class="btn">
+            <button onclick="start()">Start</button>
+            <button>Pause</button>
+            <button>Continue</button>
+            <button>Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mainWorkTask">
+        <div class="addTask">
+          <span>Công việc</span>
+          <input
+            id="inputTask"
+            style="width: 300px"
+            type="text"
+            placeholder="Hãy nhập công việc của bạn"
+          />
+          <button onclick="Them()">Add</button>
+          <button>Reset</button>
+          <button id="btn-remove">Remove</button>
+        </div>
+        <div class="listTask">
+            <div class="taskItem">
+
+            </div>
+        </div>
+      </div>
+    </section>
+    
+
+  </body>
+</html>

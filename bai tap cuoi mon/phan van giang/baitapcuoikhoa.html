@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>baitapcuoikhoa</title>
+</head>
+<style>
+	.id1{
+		background-color: yellow;
+		color: green
+		font-family: initial;
+		position: absolute;
+	  width: 200px;
+	  height: 200px;
+	  left: 50%;
+	  top: 60%;
+		}
+		.class1 {
+			width: 50px;
+			height: 20px;
+		}
+	body {
+  margin: 0;
+  min-width: 250px;
+}
+
+/* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: skyblue;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {
+  background: violet;
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+  background: red;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+  background: pink;
+  color: white;
+  text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: green;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Style the header */
+.header {
+  background-color: yellow;
+  padding: 30px 40px;
+  color: red;
+  text-align: center;
+}
+
+/* Clear floats after the header */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the input */
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+/* Style the "Add" button */
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background:violet;
+  color: black;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color:white;
+}
+</style>
+	<script type="text/javascript">
+		var timerVar = setInterval(countTimer, 1000);
+    var totalSeconds = 0;
+    function countTimer() {
+           ++totalSeconds;
+           var hour = Math.floor(totalSeconds /3600);
+           var minute = Math.floor((totalSeconds - hour*3600)/60);
+           var seconds = totalSeconds - (hour*3600 + minute*60);
+           if(hour < 10)
+             hour = "0"+hour;
+           if(minute < 10)
+             minute = "0"+minute;
+           if(seconds < 10)
+             seconds = "0"+seconds;
+           document.getElementById("timer").innerHTML = hour + ":" + minute + ":" + seconds;
+        }
+
+	</script>
+
+
+<body>
+	<div id="myDIV" class="header">
+  <h2 style="margin:5px">My To Do List</h2>
+  <input type="text" id="myInput" placeholder="Title...">
+  <span onclick="newElement()" class="addBtn">Add</span>
+</div>
+
+<ul id="myUL">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+</ul>
+
+<script>
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("bạn nên điền thứ gì đó");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+</script>
+
+<!-- </div>
+		<div class="id1">
+			<button class="class1">1</button>
+			<button class="class1">2</button>
+			<button class="class1">3</button>
+		</div>
+				<div class="id1">
+				<div id="timer"> 25:00
+			<div id="id1"></div>
+		</div>
+	  <div id ="stop_timer" onclick="clearInterval(timerVar)">	
+	  <button onclick = "stoptime"()>
+			Stop Time
+		</button>
+
+	
+		<div id="timer-string" class="class1">25:00</div> -->
+<!-- 		<div class="sc-dliRfk gPkPbq">
+			<button color="rgb(217 85 80)" class="">START</button>
+			<div class="sc-kLIISr hpcvzR">
+
+			</div>
+		</div>
+	</div>  -->
+
+        
+
+
+
+</body>
+</html>

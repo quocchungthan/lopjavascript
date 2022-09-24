@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<title>BaiTap1</title>
+    <style>
+        .class1{
+            width: 150px;
+            height: 150px;
+            /* background-color: red; */
+            border:solid 5px rgb(9, 8, 8) ;
+            font-size: medium;
+            padding-top: 50px;
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-bottom: 50px;  
+            border-radius: 10px ; 
+                  
+            }
+
+            h1 {
+                font: 100px;
+                color: red;
+                font-family: 'Times New Roman', Times, serif;
+                
+                /* text-align: center; */
+                /* padding: 20px 50px 75px; */
+
+                
+            }
+    </style>
+</head>
+<body>
+    <h1>ToDoList</h1>
+    <div class="class1"> 
+        <input type="text" name="newMission" onkeyup="thucThiFunction(event)">
+        <div id="inRaDanhSachNhiemVu"></div>
+         
+        <script>
+        
+            var thucThiLenhClear = function (e) {
+                localStorage.clear();
+                var divInraDanhSachNhiemVu = document.getElementById('inRaDanhSachNhiemVu');
+                divInraDanhSachNhiemVu.innerHTML = "";
+                danhSachNhiemVu = [];
+            }
+    
+            var danhSachNhiemVu = [];
+            console.log('ngay khi trang web dc load len')
+            var danhSachDangString = localStorage.getItem('danhSach');
+            if (danhSachDangString != null) { 
+                danhSachNhiemVu = JSON.parse(danhSachDangString);
+            }
+            for (var i = 0; i < danhSachNhiemVu.length; ++i) {
+                inRaNhiemVu(danhSachNhiemVu[i]);
+            }
+           
+            var thucThiFunction = function (e) {
+                if (e.code == 'Enter') {
+                    console.log('lenh Enter');
+                    console.log(e.target.value); 
+                    var tenNhiemVuMoi = e.target.value;
+                    danhSachNhiemVu.push(tenNhiemVuMoi); 
+                    console.log(danhSachNhiemVu);
+                    var danhSachNhiemVuDangString = JSON.stringify(danhSachNhiemVu); 
+                    localStorage.setItem('danhSach', danhSachNhiemVuDangString);
+    
+                    inRaNhiemVu(tenNhiemVuMoi);
+                    var theInput = e.target;
+                    theInput.value = "";
+                }
+    
+            };
+            function inRaNhiemVu(tenNhiemVu) {
+                var divInraDanhSachNhiemVu = document.getElementById('inRaDanhSachNhiemVu');
+                
+                var banGhiNhiemVu = document.createElement('div'); 
+                banGhiNhiemVu.innerHTML = tenNhiemVu; 
+                divInraDanhSachNhiemVu.append(banGhiNhiemVu);
+
+                
+            }
+            
+           
+        </script>
+    </div></p>
+    <button onclick="thucThiLenhClear(event)" > Clear </button>
+
+</body>
+</html>

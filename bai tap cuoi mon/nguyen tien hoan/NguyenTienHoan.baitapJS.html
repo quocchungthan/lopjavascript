@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Nguyễn Tiến Hoàn - Bài tập cuối môn lớp Javascript</title>
+	<style type="text/css">
+		body {
+			margin-left: 30%;
+		}
+		.div1 {
+			width: 600px;
+			height: 800px;
+			border: 1px solid black;
+			background-color: green;
+		}
+		.div2 {
+			background-color: lightyellow;
+		}
+		h1 {
+			padding-left: 40%;
+			color: red;
+
+		}
+		input {
+            width: 75%;
+            padding: 10px;
+            margin: 10px;
+            float: left;
+            font-size: 16px;
+            position: relative;
+         }
+		.btnAdd {
+			height: 40px;
+			width: 70px;
+			margin: 10px;
+			text-align: center;
+		}
+		.btnAdd:hover {
+			background-color: lightyellow;
+		}
+		.lithemvao {
+			border: 1px solid yellow;
+			background-color: lightyellow;
+			padding-left: 10px;
+			margin-right: 10px;
+		}
+		.close {
+			margin: 10px;
+			height: 20px;
+			width: 50px;
+			color: whitesmoke;
+			background-color: gray;
+		}
+	</style>
+</head>
+<body>
+	<div id = "myDiv1" class ="div1">
+		<div class="div2">
+			<h1>To do list</h1>
+		</div>
+		<input type="text" id="myInput" onchange="addStorage()" placeholder="Nhập nội dung to do list">
+		<button id="inputBtn" onclick="newElement()" class="btnAdd">Thêm</button>
+		<div class="tasks">
+				<ul id="myUL"></ul>
+		</div>
+	</div>
+
+	<div id ="myDiv2" class="div1_1">
+		<h1>Đồng hồ đếm ngược</h1>
+	</div>
+	<script type="text/javascript">
+      function newElement() {
+        var li = document.createElement("li");
+        var inputValue = document.getElementById("myInput").value;
+        var t = document.createTextNode(inputValue);
+        li.appendChild(t);
+        li.className = "lithemvao";
+        if (inputValue === '') {
+          alert("Hãy nhập nội dung to do list");
+        } else {
+          document.getElementById('myUL').appendChild(li);
+        }
+        document.getElementById('myInput').value = "";
+        var ul = document.createElement("button");
+        var btnXoa = document.createTextNode("xóa");
+        ul.className = "close";
+        ul.appendChild(btnXoa);
+        li.appendChild(ul);
+        for (i = 0; i < close.length; i++) {
+          close[i].onclick = function() {
+            var div = this.parentElement;
+            div.style.display = "none";
+          }
+        }
+      	}
+      	var close = document.getElementsByClassName("close");
+  		var i;
+  		for (i = 0; i < close.length; i++) {
+    		close[i].onclick = function() {
+      		var div = this.parentElement;
+      		div.style.display = "none";
+    	}
+  	}
+  	function addStorage() {
+            var noiDungCuaInput = document.getElementById('myInput').value;
+            localStorage.setItem('noidunng', noiDungCuaInput);
+        }
+    </script>
+</body>
+</html>

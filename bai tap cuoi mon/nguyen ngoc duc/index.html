@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <!-- Begin Header -->
+    <header>
+      <div id="mainHeader">
+        <div class="logo">
+          <a href="#" class="logoApp">
+            <img class="imgLogo" src="img/icon-white.png" alt="" />
+            <h2 style="font-size: 20px; display: inline-block" class="titleApp">
+              Pomofocus
+            </h2>
+          </a>
+        </div>
+        <div class="multi-media">
+          <button class="multi-item">
+            <img class="img-media" src="img/graph-white.png" alt="" />
+            <span class="text-media">Report</span>
+          </button>
+          <button class="multi-item">
+            <img class="img-media" src="img/config-white.png" alt="" />
+            <span class="text-media">Setting</span>
+          </button>
+          <button class="multi-item">
+            <img class="img-media" src="img/user-white.png" alt="" />
+            <span class="text-media">Login</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- End Header -->
+
+    <!--Begin Section-->
+    <section>
+      <div class="clock-return-main">
+        <div class="clock-return">
+          <!-- <div class="misson">
+            <button class="mission-1">Pomodoro</button>
+            <button class="mission-2">Short Break</button>
+            <button class="mission-3">Long Break</button>
+          </div> -->
+          <div style="padding: 10px; color: white" class="timer-string">
+            05:00
+          </div>
+          <div class="btn">
+            <button onclick="Start()">Start</button>
+            <button onclick="Pause()">Pause</button>
+            <button>Continue</button>
+            <button>Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mainWorkTask">
+        <div class="addTask">
+          <span>Công việc: </span>
+          <input
+            id="inputTask"
+            style="width: 200px"
+            type="text"
+            placeholder="Hãy nhập công việc của bạn"
+          />
+          <button onclick="AddTask()">Add</button>
+          <button onclick="CancelText()">Cancel</button>
+          <button onclick="ClearList()">Remove All List</button>
+        </div>
+        <div class="listTask">
+          <div class="taskItem">
+            <!-- <span id="nameWork">Công việc 1</span> -->
+            <!-- <button id="btn-remove">Remove</button> -->
+          </div>
+        </div>
+      </div>
+
+      <div id="time"></div>
+    </section>
+    <!-- End Section -->
+  </body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<title></title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 80%;
+            max-width: 30rem;
+            margin: 1rem auto;
+            line-height: 1,5;
+
+        }
+
+        button {
+            font: inherit;
+        }
+
+    </style>
+</head>
+<body >
+    <h1>Đồng hồ đếm ngược</h1>
+
+<div id="app"></div>
+<script>
+    ;(function () {
+
+
+'use strict';
+
+const duration = 360;
+let app;
+let timer;
+
+class Rue {
+  constructor (selector, options) {
+    this.elem = document.querySelector(selector);
+    this.data = options.data;
+    this.template = options.template;
+  }
+
+  
+  render () {
+    this.elem.innerHTML = this.template(this.data);
+  }
+}
+
+function getData () {
+  return {
+    time: duration,
+    paused: true
+  };
+}
+
+function format (time) {
+  
+  const minutes = Math.floor(time / 60).toString();
+  const seconds = (time % 60).toString();
+
+  
+  return minutes + ':' + seconds.padStart(2, '0');
+}
+
+
+function template (props) {
+  
+  const pausedState = props.paused ? 'Start' : 'Pause';
+
+  
+  if (props.time < 1) {
+    return `
+      <p>
+        <button id="reset" type="button">
+          Reset
+        </button>
+      </p>
+    `;
+  }
+
+ 
+  return `
+    <p>
+      ${format(props.time)}
+    </p>
+    <p>
+      <button id="${pausedState.toLowerCase()}" type="button">
+        ${pausedState}
+      </button>
+      <button id="reset" type="button">
+        Reset
+      </button>
+    </p>
+  `;
+}
+
+
+function countdown () {
+
+  app.data.time--;
+
+  if (app.data.time < 1) {
+    clearInterval(timer);
+  }
+
+  app.render();
+}
+
+function start () {
+  app.data.paused = false;
+  app.render(); 
+  timer = setInterval(countdown, 1000);
+}
+function pause () {
+  app.data.paused = true;
+  app.render();
+  clearInterval(timer);
+}
+
+function reset () {
+  app.data = getData();
+  app.render();
+  clearInterval(timer);
+}
+
+function handleClick (event) {
+  switch (event.target.id) {
+    case 'start':
+      start();
+      break;
+    case 'pause':
+      pause();
+      break;
+    case 'reset':
+      reset();
+  }
+}
+
+app = new Rue('#app', {
+  data: getData(),
+  template: template
+});
+
+app.render();
+app.elem.addEventListener('click', handleClick);
+
+})();
+</script>
+</body>
+</html>

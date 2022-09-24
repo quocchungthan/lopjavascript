@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ToDoList</title>
+    <style>
+         .title{
+                    color:darkmagenta;
+                    }
+         body { 
+                    text-align: center;
+                    background-color: darkgrey;
+                    }
+  
+         button {
+                    font: inherit;
+                    }
+         .list{
+                 color: darkgreen;
+         }
+    </style>
+</head>
+<body onresize="console.log('resized')">
+    <h1 class="title"> Countdown</h1>
+    <div id="app"></div>
+    <h1 class="list"> To Do List </h1>
+    <div >
+        <input type="text" name="nhiemVuMoi" onkeyup="thucThiFunction(event)">
+        <button onclick="thucThiLenhClear(event)"> Delete </button>
+    </div>
+    <div id="inRaDanhSachNhiemVu"></div>
+
+    <script>
+        var thucThiLenhClear = function (e) {
+            localStorage.clear(); 
+            var divInraDanhSachNhiemVu = document.getElementById('inRaDanhSachNhiemVu'); 
+            divInraDanhSachNhiemVu.innerHTML = "";
+           danhSachNhiemVu = [];
+        }
+
+        var danhSachNhiemVu = [];
+        var danhSachDangString = localStorage.getItem('danhSach');
+        if (danhSachDangString != null) {
+            danhSachNhiemVu = JSON.parse(danhSachDangString);
+        }
+        for (var i = 0; i < danhSachNhiemVu.length; ++i) {
+            inRaNhiemVu(danhSachNhiemVu[i]);
+        }
+        var thucThiFunction = function (e) {
+            if (e.code == 'Enter') {
+                console.log('lenh Enter');
+                console.log(e.target.value);
+                var tenNhiemVuMoi = e.target.value;
+                danhSachNhiemVu.push(tenNhiemVuMoi); 
+                console.log(danhSachNhiemVu);
+                var danhSachNhiemVuDangString = JSON.stringify(danhSachNhiemVu); // chuyen array thanh string
+                localStorage.setItem('danhSach', danhSachNhiemVuDangString);
+                inRaNhiemVu(tenNhiemVuMoi);
+                var theInput = e.target;
+                theInput.value = "";
+                }
+
+        };
+           function inRaNhiemVu(tenNhiemVu) {
+            var divInraDanhSachNhiemVu = document.getElementById('inRaDanhSachNhiemVu');
+            var banGhiNhiemVu = document.createElement('div'); 
+            banGhiNhiemVu.innerHTML = tenNhiemVu; 
+            var checkboxMoi = document.createElement('input');
+            checkboxMoi.setAttribute('type', 'checkbox');
+            checkboxMoi.addEventListener('change', function(e) {
+            });
+            banGhiNhiemVu.append(checkboxMoi);
+            banGhiNhiemVu.classList.add('item');
+            divInraDanhSachNhiemVu.append(banGhiNhiemVu);}
+     //dong ho//
+          (function () {
+                const duration = 360;
+                let app;
+                let timer;
+         class Rue {
+            constructor (selector, options) {
+            this.elem = document.querySelector(selector);
+            this.data = options.data;
+            this.template = options.template;
+        }
+         render () {
+            this.elem.innerHTML = this.template(this.data);
+        }
+        }
+         function getData () {
+         return {
+         time: duration,
+         paused: true
+        };
+        }
+
+         function format (time) {
+           const minutes = Math.floor(time / 60).toString();
+           const seconds = (time % 60).toString();
+         return minutes + ':' + seconds.padStart(2, '0');   
+        }
+        function template (props) {
+          const pausedState = props.paused ? 'Start' : 'Pause';
+          if (props.time < 1) {
+          return `
+            <p>
+             <button id="reset" type="button">
+             Reset
+             </button>
+            </p>
+        `;
+        }
+           return `
+            <p>  ${format(props.time)}</p>
+            <p>
+               <button id="${pausedState.toLowerCase()}" type="button">
+               ${pausedState}
+               </button>
+               <button id="reset" type="button">
+               Reset
+               </button>
+            </p>
+        `;
+        }
+         function countdown () {
+          app.data.time--;
+          if (app.data.time < 1) {
+           clearInterval(timer);
+        }
+           app.render();
+        }
+
+         function start () {
+         app.data.paused = false;
+         app.render();
+         timer = setInterval(countdown, 1000);
+        }
+
+         function pause () {
+           app.data.paused = true;
+           app.render();
+        clearInterval(timer);
+        }
+
+        function reset () {
+          app.data = getData();
+          app.render();
+          clearInterval(timer);
+        }
+        function handleClick (event) {
+           switch (event.target.id) {
+           case 'start':
+            start();
+           break;
+           case 'pause':
+            pause();
+           break;
+           case 'reset':
+            reset();
+        }
+        }
+
+        app = new Rue('#app', {
+        data: getData(),
+        template: template
+        });     
+        app.render();
+        app.elem.addEventListener('click', handleClick);
+         })();
+</script>
+</body>
+</html>

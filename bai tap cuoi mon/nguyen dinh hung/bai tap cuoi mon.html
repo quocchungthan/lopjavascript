@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTCM</title>
+    <style type="text/css">
+        .backGround{
+            background-color: brown;
+            width: 400px;
+            height: 600px;
+            font-size: 30px;
+            font-family: 'Gill Sans';
+        }
+        .top{
+            text-align: center;
+            color: white;
+        }
+        .middle{
+            text-align: center;
+            color: white;
+        }
+
+        
+        .Work{
+            background-color: brown;
+        }
+        
+    
+    </style>
+    <script language="javascript">
+ 
+        var h = null; // Giờ
+        var m = null; // Phút
+        var s = null; // Giây
+         
+        var timeout = null; // Timeout
+         
+        function start()
+        {
+            // Code
+        }
+         
+        function stop(){
+            clearTimeout(timeout);
+        }
+    </script>
+   
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="backGround">
+        <div class="top">
+            <span><i class="fa-sharp fa-solid fa-circle-check"></i> WE CAN DO IT</span>
+        </div>
+        <div class="middle">          
+            <div>
+                <input type="text" id="h_val" placeholder="Giờ" value="" /> <br/>
+                <input type="text" id="m_val" placeholder="Phút" value=""/> <br/>
+                <input type="text" id="s_val" placeholder="Giây" value=""/>
+                <br>
+                <input type="button" value="Start" onclick="Start()"/>
+                <input type="button" value="Pause" onclick="stop()"/>  <br/> <br/>
+            </div>
+             
+            <div>
+                <span id="h">Giờ</span> :
+                <span id="m">Phút</span> :
+                <span id="s">Giây</span>
+            </div>
+            
+            <br>
+            <div class="mainWorkTask">
+                <div class="addTask">
+                    <input id="inputTask" style="width: 200px" type="text" placeholder="Nhập công việc..." />
+                    <button onclick="AddTask()">Add</button>
+                    <button onclick="CancelText()">Clear</button>
+                    <div class="listTask">
+                        <div class="taskItem">
+                        </div>
+                    </div>
+                    <button onclick="ClearList()">Remove All List</button>
+            </div>
+            <script src="BTCM.js"></script>
+        </div>
+    </div>
+</body>
+</html>

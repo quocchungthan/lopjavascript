@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<style>
+    header {
+        height: 538px;
+        width: 410px;
+        /*border: solid red 1px;*/
+        background:rgb(217,85,80);
+
+    }
+    a {
+        color:rgb(37, 223, 53);
+        font-size:32px;
+        text-decoration: none;
+        
+       
+
+
+    }
+    .class1 {
+        margin-top:20px;
+        width: 400px;
+        height: 400px;
+        color:rgb(214, 205, 205);
+        background:rgb(194, 134, 132);
+
+        border: solid violet 1px;
+    }
+    .class1 span {
+        color:white;
+        font-size:50px;
+        display: flex;
+        justify-content: center;
+    }
+    .class1 button {
+        color:red;
+        font-size:20px;
+        display: inline-block;
+        left:100px;
+       
+    }
+    div ol li:hover {
+    color: brown;
+
+       
+
+    }
+    /*img {
+        width: 18px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 13px;
+    }*/
+</style>
+<body>
+    <header id="box">
+    <a href="#">ToDo List</br>
+
+    
+    
+    <script>
+        var intervalID;
+         
+        function showTime() {
+            var d = new Date();
+            document.getElementById("time").innerHTML = d.toLocaleTimeString();
+        }
+        
+        var intervalID = setInterval(showTime, 1000);
+        
+        function stopClock() {
+            clearInterval(intervalID);
+        }
+        
+        </script>
+        <div class="class1">
+        <span id="time"></span></br>
+        <button onclick="stopClock();">Bắt Đầu</button>
+        <button onclick="stopClock();">Tạm Dừng</button>
+        <button onclick="stopClock();">Tiếp Tục</button>
+        <button onclick="stopClock();">Reset</button>
+        <ol>
+            <li><a href="">Sự Kiện</a></li>
+            <li><a href="">Truyền Thông</a></li>
+            <li><a href="">Giải Trí</a></li>
+            <li><a href="">Thể Thao</a></li>
+            <li><a href="">Du Lịch</a></li>
+        </ol>
+        </div>
+     
+    
+        
+       
+</body>
+</header>
+</html>

@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* background-color: rgb(217, 85, 80); */
+}
+
+header,
+section {
+  max-width: 620px;
+  margin: auto;
+  /* height: 60px; */
+  background-color: #ccc;
+}
+
+#mainHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin: 10px 0 0 0; */
+  /* padding: 5px; */
+  height: 60px;
+  background-color: rgb(217, 85, 80);
+  border-bottom: solid 0.7px rgba(0, 0, 0, 0.7);
+}
+
+#mainHeader .logo .imgLogo {
+  width: 20px;
+}
+
+#mainHeader .logo .logoApp {
+  text-decoration: none;
+  color: white;
+}
+
+#mainHeader .multi-media {
+  display: flex;
+  justify-content: space-around;
+}
+
+#mainHeader .multi-media .multi-item {
+  margin: 0 0 0 10px;
+  padding: 5px 7px 5px 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  opacity: 0.8;
+}
+
+#mainHeader .multi-media .multi-item:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.multi-media .multi-item img,
+span {
+  margin-left: 5px;
+}
+
+#mainHeader .multi-media .img-media {
+  width: 16px;
+}
+
+/* .multi-media .multi-item {
+} */
+
+.clock-return-main {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(217, 85, 80);
+}
+
+.clock-return-main .timer-string {
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+}
+
+.clock-return-main .btn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.clock-return-main .btn button {
+  width: 100px;
+  height: 30px;
+  background: none rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  opacity: 0.8;
+}
+
+.mainWorkTask .addTask button {
+  width: 100px;
+  height: 20px;
+  background: none rgb(217, 85, 80);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  opacity: 0.8;
+}
+
+.clock-return-main .btn button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
