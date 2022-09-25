@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bài Thi Đồng hồ đếm ngược bằng JS - Nguyen Minh Vuong</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            span{border: solid 1px #ACACAC; padding: 2px;}
+        </style>
+        <script language="javascript">
+
+            var h = null;
+            var m = null; 
+            var s = null; 
+            
+            var timeout = null;
+            
+            function start(){
+                                
+                if (h === null)
+                {
+                    h = parseInt(document.getElementById('h_val').value);
+                    m = parseInt(document.getElementById('m_val').value);
+                    s = parseInt(document.getElementById('s_val').value);
+                }
+
+                if (s === -1){
+                    m -= 1;
+                    s = 59;
+                }
+
+                if (m === -1){
+                    h -= 1;
+                    m = 59;
+                }
+
+                if (h == -1){
+                    clearInterval(timeout);
+                    alert('Hết giờ');
+                    return false;
+                }
+
+
+                document.getElementById('h').innerText = h.toString();
+                document.getElementById('m').innerText = m.toString();
+                document.getElementById('s').innerText = s.toString();
+
+
+                timeout = setInterval(function(){
+                    s--;
+                }, 1000);
+            }
+            
+            function stop(){
+                clearInterval(timeout);
+            }
+
+            function reload(){
+                location.reload();
+            }
+        </script>
+    </head>
+    <body>
+        <style>
+            .dong_ho {
+                width: 100px;
+                height: 100px;
+                background: orange;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .dong_ho span{
+                border: none;
+            }
+
+            .big_block {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .big_block input {
+                margin-bottom: 7px;
+            }
+
+            strong {
+                margin-bottom: 10px;
+            }
+
+            .big_block p {
+                margin: 0;
+            }
+
+        </style>
+          <div class="big_block">
+            <strong>
+                Nhập thông tin ban đầu: <br/>
+            </strong>
+            <div>
+                <input type="text" id="h_val" placeholder="Giờ" value=""/> <br/>
+                <input type="text" id="m_val" placeholder="Phút" value=""/> <br/>
+                <input type="text" id="s_val" placeholder="Giây" value=""/>
+           </div>
+            <p>
+                <input type="button" value="Bắt đầu" onclick="start()"/>
+                <input type="button" value="Tạm dừng" onclick="stop()"/>
+            </p>
+            <P>
+                <input type="button" value="Tiếp tục" onclick="start()"/>
+                <input type="button" value="Reset" onclick="reload()"/>
+            </P>
+            <div class="dong_ho">
+                <span id="h">00</span> :
+                <span id="m">00</span> :
+                <span id="s">00</span>
+            </div>
+            
+        </div>
+    </body>
+</html>

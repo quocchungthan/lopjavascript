@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Bai Thi app ToDo List - Nguyen Minh Vuong </title>
+</head>
+<body>
+        <style>
+            .flex {
+                display: flex;
+                margin-bottom: 10px;
+            }
+
+            .form{
+                width: 300px;
+                margin-bottom: 20px;
+            }
+
+            .flex label {
+                width: 100px;
+            }
+
+            .flex input {
+                flex: 1;
+            }
+
+            table#render {
+                width: 500px;
+            }
+
+            table#render, tr, td, th{
+                border: 1px solid rgb(87, 87, 87) !important;
+            }
+        </style>
+
+        <div class="form">
+            <div class="flex">
+                <label for="">STT</label>
+                <input type="number" id="id">
+            </div>
+            <div class="flex">
+                <label for="">Công việc</label>
+                <input type="text" id="name">
+            </div>
+            <div>
+                <button onclick="add()" id="submit">Submit</button>
+            </div>
+        </div>
+
+    <table class="table" id="render">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Công việc</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script>
+
+        var data = []
+        var objCha = {};
+
+        function add() {
+            var objCon = {};
+            var item_id = document.getElementById("id").value
+            var item_name = document.getElementById("name").value
+            
+            objCon.xx = item_id;
+            objCon.yy = item_name;
+
+            objCha[item_id] = objCon;
+
+            var getLocal = JSON.parse(localStorage.getItem('todoList'));
+
+            var tong_Hop = {...getLocal, ...objCha}
+           
+            localStorage.setItem('todoList', JSON.stringify(tong_Hop));
+            
+
+            var item = {
+                Id:item_id,
+                Name:item_name,
+            }
+            
+            let index = data.findIndex((c)=>c.Id==item.Id)
+
+            if(index>=0){
+                data.splice(index,1,item)
+            }else{
+                data.push(item)
+            }
+
+            render()
+            clear()
+        }
+
+        function render(){
+            table = `<tr>
+                <th>STT</th>
+                <th>Công việc</th>
+                <th>Hành động</th>
+            </tr>`
+
+            for(let i = 0; i < data.length; i++){
+                table +=  `<tr>
+                <th>${data[i].Id}</th>
+                <th>${data[i].Name}</th>
+                <th>
+                    <button onclick="deleteItem(${data[i].Id})">Delete</button>
+                    <button onclick="editItem(${data[i].Id})">Edit</button>
+                </th>
+            </tr>`
+            }
+            document.getElementById("render").innerHTML = table
+        }
+
+        function clear(){
+            document.getElementById("id").value="";
+            document.getElementById("name").value="";
+        }
+
+        function deleteItem(x){
+            for(let i=0; i<data.length; i++){
+                if(data[i].Id == x){
+                    data.splice(i,1)
+                    render()
+                }
+            }
+        }
+
+        function editItem(x){
+            for(let i=0; i<data.length; i++){
+                if(data[i].Id == x){
+                   document.getElementById("id").value = data[i].Id;
+                   document.getElementById("name").value = data[i].Name;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
